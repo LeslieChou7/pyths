@@ -63,7 +63,7 @@ Windows另建项目内虚拟环境，以`pip install --no-index --no-deps <wheel
 
 验证器必填：`--live`、`--scenario quotes|lifecycle`、`--host`、`--port`、
 `--app-config`、`--app-info`、`--sdk-revision`、`--wheel-sha256`、`--report`及`--budget`。
-Docker运行另记录`--image-ref`。quotes使用`--codes 000001`等显式证券列表和市场33。
+Docker运行另记录`--image-ref`。`quotes` 场景每次处理同一市场的证券，例如 `--codes 688518 --market 17`。`--market` 可选沪 `17`、深 `33`、北 `151`，默认 `33`。使用显式联网 pytest 入口时可通过 `PYTHS_LIVE_MARKET` 指定同一市场。
 配置文件以只读方式挂载，报告和预算账本使用专用可写目录。配置文件由调用者本地提供。
 
 只有明确启用时才访问生产服务，普通安装、导入、默认pytest和容器工程检查均不会执行此入口。

@@ -6,6 +6,8 @@ from ._codec import StringTable, format_table_string
 from .errors import ThsProtocolError
 from .models import QuoteField, QuoteSnapshot
 
+QUOTE_MARKETS = ("17", "33", "151")
+
 
 def quote_from_table(
     table: StringTable,

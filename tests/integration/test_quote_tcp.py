@@ -62,6 +62,7 @@ def quote_response(
         "auth_rejected",
         "wrong_instance",
         "wrong_security",
+        "wrong_market",
         "current_update",
     ],
 )
@@ -128,6 +129,7 @@ def test_public_api_over_local_tcp(scenario):
                             stock_code="000002"
                             if scenario == "wrong_security"
                             else "000001",
+                            market="17" if scenario == "wrong_market" else "33",
                             package=-1 if scenario == "current_update" else 1,
                         )
                     )
@@ -194,6 +196,7 @@ def test_repeated_queries_and_idle_disconnect_recovery(disconnect, residual, rol
     listener.listen(2)
     peer_closed = threading.Event()
     errors, observed, sessions, stops = [], [], [], []
+    securities = [("000001", "33"), ("688518", "17"), ("920679", "151")]
 
     def serve():
         try:
@@ -235,11 +238,15 @@ def test_repeated_queries_and_idle_disconnect_recovery(disconnect, residual, rol
                             body.split("pageList=", 1)[1].split("\r\n", 1)[0]
                         )
                         observed.append((package, instance))
+                        code, market = securities[iteration]
+                        assert f"stockcode={code}\r\nmarketcode={market}\r\n" in body
                         connection.sendall(
                             encode_frame(
                                 quote_response(
                                     package=package,
                                     instance=instance,
+                                    stock_code=code,
+                                    market=market,
                                     omitted_frame=True,
                                     latest=f"11.{64 + iteration}",
                                 )
@@ -300,11 +307,10 @@ def test_repeated_queries_and_idle_disconnect_recovery(disconnect, residual, rol
                 assert client._session.session_id == "synthetic-session-1"
                 assert set(client._completed) == {1}
             else:
-                for iteration in range(2):
-                    assert (
-                        client.get_quote("000001", market="33").latest.display
-                        == f"11.{65 + iteration}"
-                    )
+                for iteration, (code, market) in enumerate(securities[1:]):
+                    quote = client.get_quote(code, market=market)
+                    assert (quote.stock_code, quote.market) == (code, market)
+                    assert quote.latest.display == f"11.{65 + iteration}"
                     assert client._session is original
     finally:
         worker.join(4)

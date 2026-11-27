@@ -16,6 +16,7 @@ from pathlib import Path
 import pyths
 from pyths import ThsError, ThsNetworkError, ths
 from pyths._headers import decode_response_header
+from pyths._quote import QUOTE_MARKETS
 from pyths._transport import TcpTransport
 
 FIELDS = (
@@ -296,7 +297,7 @@ def main():
     parser.add_argument("--app-config", required=True, type=Path)
     parser.add_argument("--app-info", required=True)
     parser.add_argument("--codes", nargs="+", default=["000001"])
-    parser.add_argument("--market", default="33")
+    parser.add_argument("--market", choices=QUOTE_MARKETS, default="33")
     parser.add_argument("--sdk-revision", required=True)
     parser.add_argument("--wheel-sha256", required=True)
     parser.add_argument("--image-ref", default=None)
@@ -308,11 +309,13 @@ def main():
         parser.error("explicit --live required")
     if not sys.flags.isolated or "site-packages" not in Path(pyths.__file__).parts:
         parser.error("run installed wheel with python -I outside the source tree")
-    if args.market != "33" or any(
+    if args.scenario == "lifecycle" and args.market != "33":
+        parser.error("lifecycle uses the fixed security 000001/33")
+    if any(
         len(code) != 6 or not code.isascii() or not code.isdigit()
         for code in args.codes
     ):
-        parser.error("six ASCII digits and explicit market 33 required")
+        parser.error("stock codes must be six ASCII digits")
     if args.report.exists():
         parser.error("report already exists; choose a new run id")
     return execute(args)

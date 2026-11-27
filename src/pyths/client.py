@@ -47,7 +47,7 @@ from ._limit_models import LimitFocusSummary, LimitPoolCursor, LimitPoolPage
 from ._limit_request import LimitFilters, LimitPoolKind
 from ._market import COMPONENTS, query_overview, validate_selection
 from ._market_models import MarketOverview
-from ._quote import quote_from_table
+from ._quote import QUOTE_MARKETS, quote_from_table
 from ._ranking_capabilities import capability
 from ._ranking_query import query_page
 from ._ranking_request import encode_ranking_body
@@ -345,7 +345,7 @@ class ths:
         )
 
     def get_quote(self, stock_code: str, *, market: str) -> QuoteSnapshot:
-        """实验性1269显示快照；当前要求显式端点和App配置，不自动登录。"""
+        """查询单只 A 股的 1269 显示快照，市场标识为沪 17、深 33、北 151。"""
         if self.closed:
             raise ThsClientClosedError("客户端已经关闭")
         if (
@@ -353,10 +353,10 @@ class ths:
             or len(stock_code) != 6
             or not stock_code.isascii()
             or not stock_code.isdigit()
-            or market != "33"
+            or market not in QUOTE_MARKETS
         ):
             raise ValueError(
-                "supported security requires six ASCII digits and market 33"
+                f"expected six ASCII digits and a market in {QUOTE_MARKETS}"
             )
         if self._endpoint is None or self._app_config is None or not self._app_info:
             raise ValueError("explicit endpoint, app_config and app_info required")

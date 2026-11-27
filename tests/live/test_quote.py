@@ -21,8 +21,9 @@ def test_authorized_single_quote(code):
         app_config=os.environ[keys[2]],
         app_info=os.environ[keys[3]],
     ) as client:
-        quote = client.get_quote(code, market="33")
-        assert (quote.stock_code, quote.market) == (code, "33")
+        market = os.environ.get("PYTHS_LIVE_MARKET", "33")
+        quote = client.get_quote(code, market=market)
+        assert (quote.stock_code, quote.market) == (code, market)
         for name in (
             "latest",
             "change",
