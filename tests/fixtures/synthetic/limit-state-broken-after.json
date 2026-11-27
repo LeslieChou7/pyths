@@ -1,0 +1,47 @@
+{
+  "status_code": 0,
+  "data": {
+    "date": "20261117",
+    "page": {
+      "limit": 15,
+      "total": 36,
+      "count": 3,
+      "page": 1
+    },
+    "info": [
+      {
+        "code": "900301",
+        "open_num": 2,
+        "is_again_limit": 0,
+        "first_limit_up_time": "1760000050",
+        "last_limit_up_time": "1760000300"
+      },
+      {
+        "code": "900302",
+        "open_num": 1,
+        "is_again_limit": 0,
+        "first_limit_up_time": "1760000050",
+        "last_limit_up_time": "1760000300"
+      },
+      {
+        "code": "900303",
+        "open_num": 2,
+        "is_again_limit": 0,
+        "first_limit_up_time": "1760000050",
+        "last_limit_up_time": "1760000300"
+      }
+    ],
+    "limit_up_count": {
+      "today": {
+        "num": 37,
+        "open_num": 4,
+        "rate": 0.25
+      },
+      "yesterday": {
+        "num": 9,
+        "open_num": 3,
+        "rate": 0.625
+      }
+    }
+  }
+}

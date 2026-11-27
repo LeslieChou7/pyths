@@ -1,0 +1,25 @@
+{
+  "status_code": 0,
+  "data": {
+    "date": "20261117",
+    "page": {
+      "limit": 15,
+      "total": 0,
+      "count": 0,
+      "page": 0
+    },
+    "info": [],
+    "limit_up_count": {
+      "today": {
+        "num": 2,
+        "open_num": 1,
+        "rate": 0.5
+      },
+      "yesterday": {
+        "num": 0,
+        "open_num": 2,
+        "rate": 0
+      }
+    }
+  }
+}

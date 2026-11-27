@@ -1,0 +1,104 @@
+{
+  "status_code": 0,
+  "data": {
+    "total": 16,
+    "list": [
+      {
+        "stock_code": "900101",
+        "stock_market": "17",
+        "stock_name": "合成证券0",
+        "net_inflow_of_main_force": "123456.50"
+      },
+      {
+        "stock_code": "900102",
+        "stock_market": "33",
+        "stock_name": "合成证券1",
+        "net_inflow_of_main_force": null
+      },
+      {
+        "stock_code": "900103",
+        "stock_market": "151",
+        "stock_name": "合成证券2",
+        "net_inflow_of_main_force": "123458.50"
+      },
+      {
+        "stock_code": "900104",
+        "stock_market": "17",
+        "stock_name": "合成证券3",
+        "net_inflow_of_main_force": "123459.50"
+      },
+      {
+        "stock_code": "900105",
+        "stock_market": "33",
+        "stock_name": "合成证券4",
+        "net_inflow_of_main_force": "123460.50"
+      },
+      {
+        "stock_code": "900106",
+        "stock_market": "151",
+        "stock_name": "合成证券5",
+        "net_inflow_of_main_force": null
+      },
+      {
+        "stock_code": "900107",
+        "stock_market": "17",
+        "stock_name": "合成证券6",
+        "net_inflow_of_main_force": "123462.50"
+      },
+      {
+        "stock_code": "900108",
+        "stock_market": "33",
+        "stock_name": "合成证券7",
+        "net_inflow_of_main_force": null
+      },
+      {
+        "stock_code": "900109",
+        "stock_market": "151",
+        "stock_name": "合成证券8",
+        "net_inflow_of_main_force": "123464.50"
+      },
+      {
+        "stock_code": "900110",
+        "stock_market": "17",
+        "stock_name": "合成证券9",
+        "net_inflow_of_main_force": "123465.50"
+      },
+      {
+        "stock_code": "900111",
+        "stock_market": "33",
+        "stock_name": "合成证券10",
+        "net_inflow_of_main_force": "123466.50"
+      },
+      {
+        "stock_code": "900112",
+        "stock_market": "151",
+        "stock_name": "合成证券11",
+        "net_inflow_of_main_force": "123467.50"
+      },
+      {
+        "stock_code": "900113",
+        "stock_market": "17",
+        "stock_name": "合成证券12",
+        "net_inflow_of_main_force": "123468.50"
+      },
+      {
+        "stock_code": "900114",
+        "stock_market": "33",
+        "stock_name": "合成证券13",
+        "net_inflow_of_main_force": "123469.50"
+      },
+      {
+        "stock_code": "900115",
+        "stock_market": "151",
+        "stock_name": "合成证券14",
+        "net_inflow_of_main_force": "123470.50"
+      },
+      {
+        "stock_code": "900116",
+        "stock_market": "17",
+        "stock_name": "合成证券15",
+        "net_inflow_of_main_force": "123471.50"
+      }
+    ]
+  }
+}

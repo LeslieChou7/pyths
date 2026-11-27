@@ -1,0 +1,20 @@
+# 构建上下文白名单；真实配置、Git、研究材料和本地缓存不得进入镜像。
+**
+!pyproject.toml
+!README.md
+!LICENSE
+!NOTICE
+!THIRD_PARTY_NOTICES.md
+!src/
+!src/**
+!tests/
+!tests/**
+!tools/
+!tools/check.py
+!tools/validate_live.py
+!examples/
+!examples/*.py
+!dist/
+!dist/*.whl
+**/__pycache__/
+**/*.pyc
